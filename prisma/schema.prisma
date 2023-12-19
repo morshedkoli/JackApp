@@ -11,18 +11,53 @@ datasource db {
 }
 
 
-model User {
+model Users {
   id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
-  posts Post[]
+  username String  @unique
+  password  String
+  pin Int
+  profiles Profiles?
+
+  createdAt DateTime @default(now()) @db.Timestamp(0)
+  updatedAt DateTime @default(now()) @db.Timestamp(0) @updatedAt
 }
 
-model Post {
+model Profiles {
   id        Int     @id @default(autoincrement())
-  title     String
-  content   String?
-  published Boolean @default(false)
-  author    User    @relation(fields: [authorId], references: [id])
-  authorId  Int
+  name     String
+  phone   String
+  email String @unique
+  balance Int @default(0)
+  credit_balance Int @default(0)
+
+
+  user    Users    @relation(fields: [user_id], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  user_id  Int @unique
+
+  transection Transections []
+
+
+createdAt DateTime @default(now()) @db.Timestamp(0)
+  updatedAt DateTime @default(now()) @db.Timestamp(0) @updatedAt
+}
+
+
+
+model Transections{
+  id        Int     @id @default(autoincrement())
+  services     String
+  number   String
+  amount Int
+  type String
+  reference String
+  before_balance Int
+  after_balance Int
+  status String
+
+  profile    Profiles    @relation(fields: [transection_id], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  transection_id  Int @unique
+
+
+  createdAt DateTime @default(now()) @db.Timestamp(0)
+  updatedAt DateTime @default(now()) @db.Timestamp(0) @updatedAt
 }

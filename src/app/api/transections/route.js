@@ -8,11 +8,11 @@ export async function POST(req, res) {
 
     const prisma = new PrismaClient()
     const reqBody = await req.json();
-      const user = await prisma.users.create({
+      const transection = await prisma.transections.create({
           data: reqBody
         })
   
-       return NextResponse.json({status:"success", data:user})
+       return NextResponse.json({status:"success", data:transection})
   }
   catch (e){
       return NextResponse.json({status:"fail", data:e})
