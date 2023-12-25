@@ -41,7 +41,7 @@ function SideberItem({open, item}) {
                           <li 
                           key={submenuItem.id}
                           className='text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 px-5 hover:bg-white hover:text-gray-900 rounded-md'>
-                            {submenuItem.title}
+                           <Link href={submenuItem.location}> {submenuItem.title}</Link>
                           </li>
                         ))}
                       </ul>

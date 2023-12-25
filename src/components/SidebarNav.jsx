@@ -24,22 +24,21 @@ function SidebarNav() {
   const Menus= [
     {id:1, title:"Dashboard", icon: <MdDashboard />,  location:"/" },
     { id:4,
-      spacing:true,
       location:"#",
       title:"New Request", 
       icon:<FaMoneyBillTrendUp />,
       submenu:true,
       submenuItems:[
-        {id:1, title:"Bkash CashIn", location:"/new-request/bkash"},
-        {id:2, title:"Nagad CashIn", location:"/new-request/nagad"},
-        {id:3, title:"Rocket CashIn", location:"/new-request/rocket"},
-        {id:3, title:"Mobile Recharge", location:"/new-request/mobile-recharge"},
+        {id:1, title:"Mobile Recharge", location:"/services/recharge"},
+        {id:2, title:"Bkash CashIn", location:"/services/bkash"},
+        {id:3, title:"Nagad CashIn", location:"/services/nagad"},
+        {id:4, title:"Rocket CashIn", location:"/services/rocket"},
 
       ]
     
     },
     {id:2, title:"Pending", icon: <MdOutlinePendingActions />, location:"/pending-request"  },
-    {id:3, title:"Cash Out", spacing:true, icon: <MdPayments />, location:"/cash-out"  },
+    {id:3, title:"Cash Out",  icon: <MdPayments />, location:"/cash-out"  },
     { id:4,
       title:"History", 
       location:"#",
@@ -53,6 +52,7 @@ function SidebarNav() {
       ]
     
     },
+    {id:1, title:"My Rate", icon: <MdDashboard />,  location:"/rate" },
     { id:4,
       title:"Admin", 
       location:"/admin",
@@ -62,6 +62,13 @@ function SidebarNav() {
         {id:1, title:"Users", location:"/admin/users"},
         {id:2, title:"New User", location:"/admin/users/create"},
         {id:3, title:"Add Balance", location:"/admin/add-balance"},
+        {id:4, title:"Notice", location:"/admin/notice"},
+        {id:5, title:"Brand", location:"/admin/brand"},
+        {id:5, title:"Api Settings", location:"/admin/api"},
+        {id:5, title:"Log", location:"/admin/log"},
+        {id:5, title:"Modem Settings", location:"/admin/modem"},
+        {id:5, title:"B2B", location:"/admin/b2b"},
+        {id:5, title:"SMS Inbox", location:"/admin/inbox"},
 
       ]
     
@@ -72,7 +79,7 @@ function SidebarNav() {
 
 
   return (
-    <div className={`bg-indigo-900	duration-300	 h-screen p-5 pt-8  relative ${open? "w-72" : "w-20"} `}>
+    <div className={`bg-indigo-900	duration-300 min-h-screen p-5 pt-8  relative ${open? "w-72" : "w-20"} `}>
         <ArrowForwardIcon className={`bg-white text-indigo-900 text-3xl rounded-full absolute -right-3 top-9 border duration-300 border-indigo-900 cursor-pointer ${open && "rotate-180"}`} onClick={()=>setOpen(!open)}
         />
 

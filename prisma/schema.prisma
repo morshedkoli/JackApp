@@ -16,28 +16,14 @@ model Users {
   username String  @unique
   password  String
   pin Int
-  profiles Profiles?
-
-  createdAt DateTime @default(now()) @db.Timestamp(0)
-  updatedAt DateTime @default(now()) @db.Timestamp(0) @updatedAt
-}
-
-model Profiles {
-  id        Int     @id @default(autoincrement())
   name     String
   phone   String
   email String @unique
   balance Int @default(0)
-  credit_balance Int @default(0)
-
-
-  user    Users    @relation(fields: [user_id], references: [id], onDelete: Restrict, onUpdate: Cascade)
-  user_id  Int @unique
+  credit_balance Int? @default(0)
 
   transection Transections []
-
-
-createdAt DateTime @default(now()) @db.Timestamp(0)
+  createdAt DateTime @default(now()) @db.Timestamp(0)
   updatedAt DateTime @default(now()) @db.Timestamp(0) @updatedAt
 }
 
@@ -54,7 +40,7 @@ model Transections{
   after_balance Int
   status String
 
-  profile    Profiles    @relation(fields: [transection_id], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  user    Users    @relation(fields: [transection_id], references: [id], onDelete: Restrict, onUpdate: Cascade)
   transection_id  Int @unique
 
 
