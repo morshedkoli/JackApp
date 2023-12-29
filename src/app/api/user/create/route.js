@@ -6,13 +6,25 @@ export async function POST(req, res) {
   
   try {
 
-    const prisma = new PrismaClient()
     const reqBody = await req.json();
-      const user = await prisma.users.create({
-          data: reqBody
-        })
+
+    
+    const prisma = new PrismaClient()
+      const singleUser = await prisma.users.findUnique({
+        where:{username:reqBody.username} 
+      })
   
-       return NextResponse.json({status:"success", data:user})
+if(singleUser.length===0){
+  const user = await prisma.users.create({
+    data: reqBody
+  })
+
+ return NextResponse.json({status:"success", data:user})
+}else{
+  return NextResponse.json({status:"usermatch", data:singleUser})
+
+}
+     
   }
   catch (e){
       return NextResponse.json({status:"fail", data:e})

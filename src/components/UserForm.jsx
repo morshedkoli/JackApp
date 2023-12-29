@@ -2,6 +2,7 @@
 
 import React from 'react'
 import  { useState } from 'react'
+import swal from 'sweetalert';
 
 function UserForm() {
 
@@ -35,7 +36,7 @@ function UserForm() {
 
       }
 
-     const res = await fetch("/api/user",{
+     const res = await fetch("/api/user/create",{
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(NewUser),
@@ -43,9 +44,20 @@ function UserForm() {
 
      const data= await res.json()
 
-     alert(data.status)
-     console.log(data.data)
+     if(data.status==="success"){
+      swal("Welcome Ikram Telecom!", `${data.data["name"]} Are Successfully Created as Customer`, "success");
 
+     }
+     if(data.status==="usermatch"){
+      swal(`${data.data['name']} This is Bad`, `${data.data["name"]} are already our Customer Please Login`, "info");
+     }
+     
+     else{
+      swal("Ohh!", `${data.data} Are Successfully Not Created as Customer`, "error");
+      console.log(data.data)
+     }
+
+     
     }
 
 

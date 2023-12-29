@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>GET Request with Button</title>
+</head>
+<body>
+  <button id="requestButton">Make GET Request</button>
+  <div id="response"></div>
+
+  <script>
+    const requestButton = document.getElementById("requestButton");
+    const responseDiv = document.getElementById("response");
+
+    requestButton.addEventListener("click", function() {
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", "https://ikramtelecom.net/apiJson/request/bkash?number=01963676581&amount=50&type=1&id=1254685495545544&user=Murshed&key=78e1206e7e9e930747f07de36a79b97d"); // Replace with your desired URL
+
+      xhr.onload = function() {
+        if (xhr.status === 200) {
+          const responseData = xhr.responseText;
+          responseDiv.textContent = responseData; // Display the response in the div
+        } else {
+          responseDiv.textContent = "Request failed with status: " + xhr.status;
+        }
+      };
+
+      xhr.send();
+    });
+  </script>
+</body>
+</html>
