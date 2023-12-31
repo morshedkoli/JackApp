@@ -18,9 +18,10 @@ model Users {
   pin Int
   name     String
   phone   String
+  otp String
   email String @unique
-  balance Int @default(0)
-  credit_balance Int? @default(0)
+  balance Int 
+  credit_balance Int
 
   transection Transections []
   createdAt DateTime @default(now()) @db.Timestamp(0)

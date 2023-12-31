@@ -7,16 +7,24 @@ export async function POST(req, res) {
   try {
 
     const reqBody = await req.json();
+    reqBody.otp="0";
+   
 
     
     const prisma = new PrismaClient()
-      const singleUser = await prisma.users.findMany({
-        where:{username:reqBody.username} 
-      })
+
+    const exitingUser= await prisma.users.findMany({
+      where:{username:reqBody.username} 
+    })
+
+      // const singleUser = await prisma.users.findMany({
+      //   where:{username:reqBody.username} 
+      // })
 
   
-if(singleUser.length===1){
-  return NextResponse.json({status:"usermatch", data: singleUser})
+if(exitingUser.length===1){
+  return NextResponse.json({status:"usermatch", data: exitingUser})
+  console.log(exitingUser)
 
 }else{
 

@@ -60,7 +60,7 @@ function SidebarNav() {
       submenu:true,
       submenuItems:[
         {id:1, title:"Users", location:"/admin/users"},
-        {id:2, title:"New User", location:"/admin/users/create"},
+        {id:2, title:"New User", location:"/admin/users/registration"},
         {id:3, title:"Add Balance", location:"/admin/add-balance"},
         {id:4, title:"Notice", location:"/admin/notice"},
         {id:5, title:"Brand", location:"/admin/brand"},

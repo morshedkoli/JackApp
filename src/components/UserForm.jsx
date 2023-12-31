@@ -36,7 +36,7 @@ function UserForm() {
 
       }
 
-     const res = await fetch("/api/user/create",{
+     const res = await fetch("/api/user/registration",{
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(NewUser),
@@ -54,8 +54,8 @@ function UserForm() {
      }
      
      else{
-      swal("Ohh!", `${data.data} Are Successfully Not Created as Customer`, "error");
-      console.log(data.data)
+      swal("Ohh!", `${data.data.e} Are Successfully Not Created as Customer`, "error");
+      console.log(data)
      }
 
      
@@ -85,7 +85,7 @@ function UserForm() {
          <label className='flex-1 p-1' htmlFor="username">User Name:</label>
           <input onChange={handleInputChange} className='flex-1 p-1 rounded ' type="text" placeholder='User Name' name='username' required/>
          </div>
-
+{/* 
          <div className='flex shadow p-2 mb-2 rounded-lg'>
          <label className='flex-1 p-1' htmlFor="balance">Balance:</label>
           <input onChange={handleInputChange} className='flex-1 p-1 rounded ' type="number" placeholder='Balance' name='balance' defaultValue="0" required/>
@@ -94,7 +94,7 @@ function UserForm() {
          <div className='flex shadow p-2 mb-2 rounded-lg'>
          <label className='flex-1 p-1' htmlFor="credit-balance">Credit Balance:</label>
           <input onChange={handleInputChange} className='flex-1 p-1 rounded ' type="number" placeholder='Credit Balance' defaultValue="0" name='creditBalance' required/>
-         </div>
+         </div> */}
 
          <div className='flex shadow p-2 mb-2 rounded-lg'>
          <label className='flex-1 p-1' htmlFor="password">Password:</label>
