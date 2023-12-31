@@ -1,5 +1,6 @@
 import {jwtVerify,SignJWT} from "jose";
-I
+
+
 export async function CreateToken(email,id){
     const secret=new TextEncoder().encode(process.env.JWT_SECRET);
     const Payload={email:email,id:id};
@@ -7,7 +8,7 @@ export async function CreateToken(email,id){
         .setProtectedHeader({alg: 'HS256'})
         .setIssuedAt()
         .setIssuer(process.env.JWT_ISSUER)
-        .setExpirationTiime (process.env.JWT_EXPIRATION_TIME)
+        .setExpirationTime (process.env.JWT_EXPIRATION_TIME)
         .sign(secret)
     return token;
 }

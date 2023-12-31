@@ -29,8 +29,9 @@ function UserForm() {
         phone:userdata.phone,
         email: userdata.email,
         username:userdata.username,
-        balance: parseInt(userdata.balance) || 0,
-        credit_balance:parseInt(userdata.creditBalance) || 0,
+        // balance: parseInt(userdata.balance) || 0,
+        // credit_balance:parseInt(userdata.creditBalance) || 0,
+        // otp:parseInt(userdata.otp) || 0,
         password:userdata.password,
         pin:parseInt(userdata.pin)
 
@@ -43,19 +44,18 @@ function UserForm() {
      })
 
      const data= await res.json()
+     console.log(data)
 
      if(data.status==="success"){
       swal("Welcome Ikram Telecom!", `${data.data["name"]} Are Successfully Created as Customer`, "success");
 
      }
      if(data.status==="usermatch"){
-      console.log(data)
-      // swal(`${data.data['name']} This is Bad`, `${data.data["name"]} are already our Customer Please Login`, "info");
+      swal(`${data.data['username']} `, ` are already our Customer Please Login`, "info");
      }
      
      else{
       swal("Ohh!", `${data.data.e} Are Successfully Not Created as Customer`, "error");
-      console.log(data)
      }
 
      

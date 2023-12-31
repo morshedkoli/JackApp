@@ -23,7 +23,7 @@ function SidebarNav() {
 
   const Menus= [
     {id:1, title:"Dashboard", icon: <MdDashboard />,  location:"/" },
-    { id:4,
+    { id:2,
       location:"#",
       title:"New Request", 
       icon:<FaMoneyBillTrendUp />,
@@ -37,9 +37,9 @@ function SidebarNav() {
       ]
     
     },
-    {id:2, title:"Pending", icon: <MdOutlinePendingActions />, location:"/pending-request"  },
-    {id:3, title:"Cash Out",  icon: <MdPayments />, location:"/cash-out"  },
-    { id:4,
+    {id:3, title:"Pending", icon: <MdOutlinePendingActions />, location:"/pending-request"  },
+    {id:4, title:"Cash Out",  icon: <MdPayments />, location:"/cash-out"  },
+    { id:5,
       title:"History", 
       location:"#",
       icon:<FaHistory />      ,
@@ -52,8 +52,8 @@ function SidebarNav() {
       ]
     
     },
-    {id:1, title:"My Rate", icon: <MdDashboard />,  location:"/rate" },
-    { id:4,
+    {id:6, title:"My Rate", icon: <MdDashboard />,  location:"/rate" },
+    { id:7,
       title:"Admin", 
       location:"/admin",
       icon:<MdAdminPanelSettings />      ,
@@ -64,11 +64,11 @@ function SidebarNav() {
         {id:3, title:"Add Balance", location:"/admin/add-balance"},
         {id:4, title:"Notice", location:"/admin/notice"},
         {id:5, title:"Brand", location:"/admin/brand"},
-        {id:5, title:"Api Settings", location:"/admin/api"},
-        {id:5, title:"Log", location:"/admin/log"},
-        {id:5, title:"Modem Settings", location:"/admin/modem"},
-        {id:5, title:"B2B", location:"/admin/b2b"},
-        {id:5, title:"SMS Inbox", location:"/admin/inbox"},
+        {id:6, title:"Api Settings", location:"/admin/api"},
+        {id:7, title:"Log", location:"/admin/log"},
+        {id:8, title:"Modem Settings", location:"/admin/modem"},
+        {id:9, title:"B2B", location:"/admin/b2b"},
+        {id:10, title:"SMS Inbox", location:"/admin/inbox"},
 
       ]
     
