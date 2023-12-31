@@ -32,12 +32,7 @@ export default function Home() {
     <RechargeBox/>
 
    <Customers/>
-   <Customers/>
-   <Customers/>
-   <Customers/>
-   <Customers/>
-   <Customers/>
-   <Customers/>
+  
 
     </div>
   )

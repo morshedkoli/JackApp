@@ -49,7 +49,8 @@ function UserForm() {
 
      }
      if(data.status==="usermatch"){
-      swal(`${data.data['name']} This is Bad`, `${data.data["name"]} are already our Customer Please Login`, "info");
+      console.log(data)
+      // swal(`${data.data['name']} This is Bad`, `${data.data["name"]} are already our Customer Please Login`, "info");
      }
      
      else{

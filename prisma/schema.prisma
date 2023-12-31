@@ -39,10 +39,8 @@ model Transections{
   before_balance Int
   after_balance Int
   status String
-
-  user    Users    @relation(fields: [transection_id], references: [id], onDelete: Restrict, onUpdate: Cascade)
-  transection_id  Int @unique
-
+  userId Int
+  user    Users    @relation(fields: [userId], references: [id], onDelete: Restrict, onUpdate: Cascade)
 
   createdAt DateTime @default(now()) @db.Timestamp(0)
   updatedAt DateTime @default(now()) @db.Timestamp(0) @updatedAt

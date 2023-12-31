@@ -12,12 +12,7 @@ export async function GET(req, res) {
 
   try {
 
-    const data = await prisma.users.findMany({
-      take: 3, // Limit the result to 3 users
-        orderBy: {
-          balance: 'desc', // Order the users by balance in ascending order
-        },
-    })
+    const data = await prisma.users.findMany()
   
        return NextResponse.json({status:"success", data:data})
   }

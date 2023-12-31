@@ -3,7 +3,7 @@ import React from 'react'
 
 async function page() {
 
-    const res = await fetch(`${process.env.HOST}/api/transections`,{
+    const res = await fetch(`${process.env.HOST}/api/transections/pending`,{
         cache:"no-store"
     });
     const data = await res.json()
@@ -11,9 +11,9 @@ async function page() {
 
   return (
     <div className="w-full p-4">
-          {/* <div className='bg-red-500 pt-2 pb-2 text-white rounded-lg'>
+          <div className='bg-red-500 pt-2 pb-2 text-white rounded-lg'>
           <h2 className='text-center text-red font-bold text-2xl'>Total {data["data"].length} Request are Pending Now</h2>
-          </div> */}
+          </div>
 
 
       {

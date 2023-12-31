@@ -19,3 +19,34 @@ export async function POST(req, res) {
   }
 }
 
+
+
+
+export async function GET(req, res) {
+  
+
+  const prisma = new PrismaClient();
+
+  // const reqBody = await req.json();
+  // return NextResponse.json({status:"success", data:user})
+
+  try {
+
+    const data = await prisma.transections.findMany({
+      
+      include:{user:true},
+
+      where: {
+        status: {
+          not: 'pending',
+        },
+      }
+      
+    })
+       return NextResponse.json({status:"success", data:data})
+  }
+  catch (e){
+      return NextResponse.json({status:"fail", data:e})
+  }
+}
+
