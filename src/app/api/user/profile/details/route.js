@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
 import { SendEmail } from "@/utility/EmailUtility";
-import { headers } from "../../../../../../next.config";
+import { headers } from "next/headers";
 
 export async function GET(req, res) {
   try {
