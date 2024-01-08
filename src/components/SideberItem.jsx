@@ -1,4 +1,4 @@
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+"use client"
 import Link from 'next/link';
 import { useState } from 'react';
 

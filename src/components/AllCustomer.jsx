@@ -1,4 +1,3 @@
-import React from 'react'
 import ControlledAccordions from './ControlledAccordions';
 
 async function AllCustomer() {

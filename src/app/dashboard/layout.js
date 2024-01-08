@@ -1,7 +1,7 @@
 import { Inter } from "next/font/google";
-import "./globals.css";
-import ResponsiveAppBar from "../components/ResponsiveAppBar";
-import SidebarNav from "../components/SidebarNav";
+import "../globals.css";
+import SidebarNav from "@/components/SidebarNav";
+import ResponsiveAppBar from "@/components/ResponsiveAppBar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,7 +14,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <div className="flex">{children}</div>
+        <ResponsiveAppBar />
+        <div className="flex">
+          <SidebarNav />
+          {children}
+        </div>
       </body>
     </html>
   );

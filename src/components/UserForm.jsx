@@ -20,7 +20,7 @@ function UserForm() {
       });
     }
 
-    async function submitForm(e){
+     function submitForm(e){
 
       e.preventDefault()
 
@@ -37,13 +37,13 @@ function UserForm() {
 
       }
 
-     const res = await fetch("/api/user/registration",{
+     const res =  fetch("/api/user/registration",{
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(NewUser),
      })
 
-     const data= await res.json()
+     const data=  res.json()
      console.log(data)
 
      if(data.status==="success"){

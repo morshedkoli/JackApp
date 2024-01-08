@@ -149,11 +149,12 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+           
+                <MenuItem   onClick={handleCloseUserMenu}>
+              
+                  <Link href="/api/user/login">Log Out</Link>
                 </MenuItem>
-              ))}
+             
             </Menu>
           </Box>
         </Toolbar>
