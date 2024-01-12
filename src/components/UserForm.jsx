@@ -20,7 +20,7 @@ function UserForm() {
       });
     }
 
-     function submitForm(e){
+    async function submitForm(e){
 
       e.preventDefault()
 
@@ -37,21 +37,21 @@ function UserForm() {
 
       }
 
-     const res =  fetch("/api/user/registration",{
+     const res = await fetch("/api/user/registration",{
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(NewUser),
      })
 
-     const data=  res.json()
+     const data= await res.json()
      console.log(data)
 
      if(data.status==="success"){
-      swal("Welcome Ikram Telecom!", `${data.data["name"]} Are Successfully Created as Customer`, "success");
+      swal("Welcome To Ikram Telecom!", `${data.data["name"]} Are Successfully Created as Customer`, "success");
 
      }
-     if(data.status==="usermatch"){
-      swal(`${data.data['username']} `, ` are already our Customer Please Login`, "info");
+    else if(data.status==="usermatch"){
+      swal(`${data.data['username']} `, ` are already our Customer `, "info");
      }
      
      else{
@@ -104,7 +104,7 @@ function UserForm() {
 
          <div className='flex shadow p-2 mb-2 rounded-lg'>
          <label className='flex-1 p-1' htmlFor="pin">Pin:</label>
-          <input onChange={handleInputChange} className='flex-1 p-1 rounded ' type="number" placeholder='Pin' name='pin' required/>
+          <input onChange={handleInputChange} className='flex-1 p-1 rounded ' type="password" placeholder='Pin' name='pin' required/>
          </div>
 
          <button type='submit' className='w-full bg-green-400 p-2 rounded-md font-bold uppercase'>Submit</button>

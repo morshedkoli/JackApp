@@ -7,6 +7,8 @@ export async function POST(req, res) {
     reqBody.otp = "0";
     reqBody.balance = 0;
     reqBody.credit_balance = 0;
+    reqBody.userType = "user";
+    reqBody.active = false;
 
     const prisma = new PrismaClient();
 

@@ -11,21 +11,23 @@ datasource db {
 }
 
 model Users {
-  id             Int     @id @default(autoincrement())
-  username       String  @unique
+  id             Int            @id @default(autoincrement())
+  username       String         @unique
   password       String
   pin            Int
   name           String
   phone          String?
   otp            String
-  email          String? @unique
+  email          String?        @unique
   balance        Int
   credit_balance Int
-  isAdmin        Boolean @default(false)
-
-  transection Transections[]
-  createdAt   DateTime       @default(now()) @db.Timestamp(0)
-  updatedAt   DateTime       @default(now()) @updatedAt @db.Timestamp(0)
+  isAdmin        Boolean        @default(false)
+  reference      String?
+  userType       UserType
+  active         Boolean
+  transection    Transections[]
+  createdAt      DateTime       @default(now()) @db.Timestamp(0)
+  updatedAt      DateTime       @default(now()) @updatedAt @db.Timestamp(0)
 }
 
 model Transections {
@@ -45,4 +47,10 @@ model Transections {
 
   createdAt DateTime @default(now()) @db.Timestamp(0)
   updatedAt DateTime @default(now()) @updatedAt @db.Timestamp(0)
+}
+
+enum UserType {
+  Admin
+  SuperAdmin
+  user
 }
