@@ -25,7 +25,3 @@ export async function middleware(req, res) {
     return NextResponse.next({ request: { headers: requestHeader } });
   }
 }
-
-export const config = {
-  matcher: "/about/:path*",
-};
