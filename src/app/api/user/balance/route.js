@@ -14,7 +14,10 @@ export async function GET(req, res) {
       where: { id: userID },
     });
 
-    return NextResponse.json({ status: "success", data: data });
+    return NextResponse.json({
+      status: "success",
+      data: { balance: data["balance"], name: data["name"] },
+    });
   } catch (e) {
     return NextResponse.json({ status: "fail", data: e });
   }

@@ -1,5 +1,6 @@
 import Customers from "@/components/Customers";
 import RechargeBox from "@/components/RechargeBox";
+import { StateCard } from "@/components/StateCard";
 import Image from "next/image";
 
 export default function Home() {
@@ -14,15 +15,22 @@ export default function Home() {
       </div>
 
       <div className="flex justify-between">
-        <div className=" bg-green-400 p-4 rounded">
-          <h1 className="text-2xl text-white bold ">Balance: 5000</h1>
-        </div>
-        <div className=" bg-green-400 p-4 rounded">
-          <h1 className="text-2xl text-white bold ">Total Send: 5000</h1>
-        </div>
-        <div className=" bg-green-400 p-4 rounded">
-          <h1 className="text-2xl text-white bold ">Total Received: 5000</h1>
-        </div>
+        <StateCard
+          title="Your Current Balance"
+          desc="You Can use This balance for everything"
+          amount="5000"
+        />
+        <StateCard
+          title="Total Send Amount"
+          desc="From start your sended Amount"
+          amount="5000"
+        />
+
+        <StateCard
+          title="Total Receive amount"
+          desc="This is your Total Lifetime deposite"
+          amount="5000"
+        />
       </div>
 
       <RechargeBox />

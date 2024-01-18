@@ -18,14 +18,27 @@ export async function POST(req, res) {
         where: { id: userID },
         data: { balance: user.balance - parseInt(reqBody.amount) },
       });
+
+      reqBody.services = "bkash";
+      reqBody.before_balance = user.balance;
+      reqBody.after_balance = user.balance - parseInt(reqBody.amount);
+      reqBody.status = "pending";
+      reqBody.type = "sendMoney";
+      reqBody.reference = reqBody.number;
+
       const transection = await prisma.transections.create({
         data: reqBody,
       });
       return NextResponse.json({ status: "success", data: transection });
     } else {
-      return NextResponse.json({ status: "Fail", data: "Insuficent Balance" });
+      return NextResponse.json({
+        status: "ins-balance",
+        data: "Insuficent Balance",
+      });
     }
   } catch (e) {
+    console.log(e.toString());
+
     return NextResponse.json({ status: "fail", data: e.toString() });
   }
 }

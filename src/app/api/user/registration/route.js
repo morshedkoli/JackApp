@@ -23,9 +23,20 @@ export async function POST(req, res) {
     if (exitingUser.length === 1) {
       return NextResponse.json({ status: "usermatch", data: exitingUser[0] });
     } else {
-      const user = await prisma.users.create({
-        data: reqBody,
+      const exitingEmail = await prisma.users.findMany({
+        where: { email: reqBody.email },
       });
+      if (exitingEmail.length === 1) {
+        return NextResponse.json({
+          status: "emailmatch",
+          data: exitingUser[0],
+        });
+      } else {
+        const user = await prisma.users.create({
+          data: reqBody,
+        });
+      }
+
       return NextResponse.json({
         status: "success",
         data: { username: user.username, name: user.name },

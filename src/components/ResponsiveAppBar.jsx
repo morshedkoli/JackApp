@@ -25,12 +25,13 @@ const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
   const [anchorElUser, setAnchorElUser] = useState(null);
 
   const [user, setUser] = React.useState({})
+
   useEffect(() => {
-    fetch('http://localhost:3000/api/user')
+    fetch('/api/user/balance')
       .then((res) => res.json())
       .then((data) => {
-        setUser(data)
-        console.log(data)
+        setUser(data["data"])
+        
       })
   }, [])
 
@@ -140,7 +141,7 @@ const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
           </Box>
 
        <div>
-        <h2>Hello Jakir</h2>
+        <h2>Hello, {user['name']} , Balance: {user["balance"]} </h2>
        </div>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">

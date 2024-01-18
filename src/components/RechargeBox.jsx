@@ -7,7 +7,7 @@ function RechargeBox() {
 
     const Services = [
         {title:"Recharge", location:"/services/recharge", image:"https://ikramtel.in/webapp/img/Mobile%20Recharge.png"},
-        {title:"bKash", location:"/services/bkash", image:"https://ikramtel.in/webapp/img/bKash.png"},
+        {title:"bKash", location:"dashboard/services/bkash", image:"https://ikramtel.in/webapp/img/bKash.png"},
         {title:"Nagad", location:"/services/nagad", image:"https://ikramtel.in/webapp/img/Nagad.png"},
         {title:"Rocket", location:"/services/rocket", image:"https://ikramtel.in/webapp/img/Rocket.png"},
         // {titile:"mChash", location:"/services/mcash", image:"https://ikramtel.in/webapp/img/mCash.png"},

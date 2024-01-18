@@ -15,7 +15,6 @@ function UserForm() {
 
     const [userdata, setUserData] = useState({})
 
-
   
   
     function handleInputChange(event) {
@@ -50,7 +49,6 @@ function UserForm() {
      })
 
      const data= await res.json()
-     console.log(data)
 
      if(data.status==="success"){
       swal("Welcome To Ikram Telecom!", `${data.data["name"]} Are Successfully Created as Customer`, "success");
@@ -58,6 +56,9 @@ function UserForm() {
      }
     else if(data.status==="usermatch"){
       swal(`${data.data['username']} `, ` are already our Customer `, "info");
+     }
+     else if(data.status==="emailmatch"){
+      swal( `${userdata.email} `,`Email Address are already exist in our system `, "info");
      }
      
      else{
@@ -80,7 +81,7 @@ function UserForm() {
     Go With Your Business Next Level</p>
 </div>
 
-<form>
+<form  onSubmit={submitForm}>
 
 
 <Label htmlFor="name" > Name*</Label>
@@ -126,7 +127,7 @@ function UserForm() {
            required
  />
 
-<Button type="submit" className="w-full mt-6 bg-indigo-500 rounded-full hover:bg-indigo-700" > Login</Button>
+<Button type="submit" className="w-full mt-6 bg-indigo-500 rounded-full hover:bg-indigo-700" > Register</Button>
 
 
 </form>
