@@ -3,6 +3,12 @@
 import React from 'react'
 import  { useState } from 'react'
 import swal from 'sweetalert';
+import { Button } from './ui/button';
+import { Label } from './ui/label';
+import { Input } from './ui/input';
+import Image from 'next/image';
+import { Player, Controls } from '@lottiefiles/react-lottie-player';
+import Link from 'next/link';
 
 function UserForm() {
 
@@ -63,55 +69,84 @@ function UserForm() {
 
 
   return (
-    <>
-         <form onSubmit={submitForm} className='w-100 rounded bg-green-100 p-4'>
-         <div className='flex shadow p-2 mb-2 rounded-lg'>
-         <label className='flex-1 p-1 ' htmlFor="name">Name:</label>
-          <input onChange={handleInputChange} className='flex-1 p-1 rounded ' type="text" placeholder='Name' name='name' required/>
-         </div>
+    <div className='grid w-full h-full grid-cols-1 bg-white md:grid-cols-2'>
+      
+<div className='bg-[#16202a] text-white flex items-center  flex-col '>
+  
+<div className='my-4'>
+  <h1 className='text-3xl font-semibold'>Registration</h1>
+  <p className='mt-2 text-xs text-slate-400'>
+    {' '}
+    Go With Your Business Next Level</p>
+</div>
 
-         <div className='flex shadow p-2 mb-2 rounded-lg'>
-         <label className='flex-1 p-1 ' htmlFor="phone">Phone:</label>
-          <input onChange={handleInputChange} className='flex-1 p-1 rounded ' type="text" placeholder='phone' name='phone' required/>
-         </div>
-
-         <div className='flex shadow p-2 mb-2 rounded-lg'>
-         <label className='flex-1 p-1 ' htmlFor="email">Email:</label>
-          <input onChange={handleInputChange} className='flex-1 p-1 rounded ' type="email" placeholder='Email' name='email' required/>
-         </div>
+<form>
 
 
-         <div className='flex shadow p-2 mb-2 rounded-lg'>
-         <label className='flex-1 p-1' htmlFor="username">User Name:</label>
-          <input onChange={handleInputChange} className='flex-1 p-1 rounded ' type="text" placeholder='User Name' name='username' required/>
-         </div>
-{/* 
-         <div className='flex shadow p-2 mb-2 rounded-lg'>
-         <label className='flex-1 p-1' htmlFor="balance">Balance:</label>
-          <input onChange={handleInputChange} className='flex-1 p-1 rounded ' type="number" placeholder='Balance' name='balance' defaultValue="0" required/>
-         </div>
+<Label htmlFor="name" > Name*</Label>
+<Input className="mt-2 mb-4 bg-transparent rounded-full"
+ type="text" id="name" 
+ onChange={handleInputChange}
+  placeholder='Name' name='name' required
+ />
 
-         <div className='flex shadow p-2 mb-2 rounded-lg'>
-         <label className='flex-1 p-1' htmlFor="credit-balance">Credit Balance:</label>
-          <input onChange={handleInputChange} className='flex-1 p-1 rounded ' type="number" placeholder='Credit Balance' defaultValue="0" name='creditBalance' required/>
-         </div> */}
+<Label htmlFor="phone" > Phone Number*</Label>
+<Input className="mt-2 mb-4 bg-transparent rounded-full"
+ type="text" id="phone" 
+ onChange={handleInputChange}
+  placeholder='phone' name='phone' required
+ />
 
-         <div className='flex shadow p-2 mb-2 rounded-lg'>
-         <label className='flex-1 p-1' htmlFor="password">Password:</label>
-          <input onChange={handleInputChange} className='flex-1 p-1 rounded ' type="password" placeholder='Password' name='password' required/>
-         </div>
+<Label htmlFor="email" > Email*</Label>
+<Input className="mt-2 mb-4 bg-transparent rounded-full"
+  id="phone" 
+ onChange={handleInputChange}
+ type="email" placeholder='Email' name='email' required
+ />
+
+<Label htmlFor="username" > Username*</Label>
+<Input className="mt-2 mb-4 bg-transparent rounded-full"
+  id="phone" 
+ onChange={handleInputChange}
+ type="text" placeholder='username' name='username' required
+ />
+
+<Label htmlFor="password" > Password*</Label>
+<Input className="mt-2 mb-4 bg-transparent rounded-full"
+ type="password" id="password" placeholder="Password"
+ onChange={handleInputChange}
+           name='password'
+ />
+
+<Label htmlFor="pin" > Pin*</Label>
+<Input className="mt-2 mb-4 bg-transparent rounded-full"
+ type="password" id="pin" placeholder="Pin"
+ onChange={handleInputChange}
+           name='pin'
+           required
+ />
+
+<Button type="submit" className="w-full mt-6 bg-indigo-500 rounded-full hover:bg-indigo-700" > Login</Button>
 
 
-         <div className='flex shadow p-2 mb-2 rounded-lg'>
-         <label className='flex-1 p-1' htmlFor="pin">Pin:</label>
-          <input onChange={handleInputChange} className='flex-1 p-1 rounded ' type="password" placeholder='Pin' name='pin' required/>
-         </div>
+</form>
 
-         <button type='submit' className='w-full bg-green-400 p-2 rounded-md font-bold uppercase'>Submit</button>
+<p className='mt-6 text-slate-500' 
+>Already Have an Account? <Link href="/">Login</Link> Here.</p>
 
+</div>
 
-        </form>
-    </>
+<div className='relative hidden md:block'>
+<Player
+  autoplay
+  loop
+  src="https://lottie.host/be5b509b-560d-4f49-bab6-eadfe780189a/l46ueeJ6GM.json"
+  style={{  width: '500px' }}
+>
+</Player>
+
+</div>
+      </div>
   )
 }
 

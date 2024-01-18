@@ -9,14 +9,12 @@ function page() {
 
 
   return (
-    <div className=' w-full'>
-      <div className='flex flex-col justify-center items-center '>
-        <h2  className='text-center uppercase font-semibold bg-white p-2 mb-2 rounded'>Create New Customer</h2>
+    <main className="bg-[#26313c] h-screen flex items-center justify-center p-10 w-full">
+
 
         <UserForm/>
        
-      </div>
-    </div>
+      </main>
   )
 }
 

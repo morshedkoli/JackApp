@@ -1,5 +1,11 @@
 "use client"
 import React, { useState } from 'react'
+import { Button } from './ui/button';
+import { Label } from './ui/label';
+import { Input } from './ui/input';
+import Image from 'next/image';
+import { Player, Controls } from '@lottiefiles/react-lottie-player';
+import Link from 'next/link';
 
 function Login() {
 
@@ -34,54 +40,55 @@ function Login() {
 
 
   return (
-    <div>
-         <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "90vh",
-      }}
-    >
-      <div style={{ border: "1px solid black", padding: "30px" }}>
-        <h2>Login Page</h2>
-        <div style={{ padding: "10px" }}>
-          <label>Username:</label>
-          <input
-          onChange={handleInputChange}
+   
+      <div className='grid w-full h-full grid-cols-1 bg-white md:grid-cols-2'>
+<div className='bg-[#16202a] text-white flex items-center justify-center flex-col '>
+<div className='my-4'>
+  <h1 className='text-3xl font-semibold'>Login</h1>
+  <p className='mt-2 text-xs text-slate-400'>
+    {' '}
+    Go With Your Business Next Level</p>
+</div>
+
+<form>
+
+
+<Label htmlFor="username" > UserName*</Label>
+<Input className="mt-2 mb-4 bg-transparent rounded-full"
+ type="text" id="username" placeholder="Username"
+ onChange={handleInputChange}
           name='username'
-            style={{ padding: "5px", borderRadius: "10px" }}
-            type="text"
-            placeholder="username"
-          />
-        </div>
-        <div style={{ padding: "10px" }}>
-          <label>Password:</label>
-          <input
-           onChange={handleInputChange}
+ />
+
+<Label htmlFor="password" > Password*</Label>
+<Input className="mt-2 mb-4 bg-transparent rounded-full"
+ type="text" id="password" placeholder="Password"
+ onChange={handleInputChange}
            name='password'
-            style={{ padding: "5px", borderRadius: "10px" }}
-            type="text"
-            placeholder="Password"
-          />
-        </div>
-        <button
-          style={{
-            width: "100%",
-            padding: "10px",
-            fontSize: "20px",
-            backgroundColor: "green",
-            color: "white",
-            fontWeight: "bold",
-            cursor:'pointer'
-          }}
-          onClick={onLogin}
-        >
-          Login
-        </button>
+ />
+
+<Button type="submit" className="w-full mt-6 bg-indigo-500 rounded-full hover:bg-indigo-700" > Login</Button>
+
+
+</form>
+
+<p className='mt-6 text-slate-500' 
+>Don't Have an Account? <Link href="/user/registration">Register</Link> Here.</p>
+
+</div>
+
+<div className='relative hidden md:block'>
+<Player
+  autoplay
+  loop
+  src="https://lottie.host/63845016-df0d-499e-9f81-381cbfef65ba/KhlCUJMWrr.json"
+  // style={{ height: '300px', width: '300px' }}
+>
+</Player>
+
+</div>
       </div>
-    </div>
-    </div>
+  
   )
 }
 
