@@ -6,7 +6,7 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
@@ -23,11 +23,11 @@ model Users {
   credit_balance Int
   isAdmin        Boolean        @default(false)
   reference      String?
-  userType       UserType
+  userType       String
   active         Boolean
   transection    Transections[]
-  createdAt      DateTime       @default(now()) @db.Timestamp(0)
-  updatedAt      DateTime       @default(now()) @updatedAt @db.Timestamp(0)
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @default(now()) @updatedAt
 }
 
 model Transections {
@@ -45,12 +45,6 @@ model Transections {
   userId         Int
   user           Users   @relation(fields: [userId], references: [id], onDelete: Restrict, onUpdate: Cascade)
 
-  createdAt DateTime @default(now()) @db.Timestamp(0)
-  updatedAt DateTime @default(now()) @updatedAt @db.Timestamp(0)
-}
-
-enum UserType {
-  Admin
-  SuperAdmin
-  user
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
 }
