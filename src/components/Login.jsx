@@ -78,7 +78,7 @@ function Login() {
 </form>
 
 <p className='mt-6 text-slate-500' 
->Don't Have an Account? <Link href="/user/registration">Register</Link> Here.</p>
+>Dont Have an Account? <Link href="/user/registration">Register</Link> Here.</p>
 
 </div>
 
