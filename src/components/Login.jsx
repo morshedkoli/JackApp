@@ -51,7 +51,7 @@ function Login() {
 <div className='my-4'>
   <h1 className='text-3xl font-semibold'>Login</h1>
   <p className='mt-2 text-xs text-slate-400'>
-    {' '}
+  
     Go With Your Business Next Level</p>
 </div>
 
