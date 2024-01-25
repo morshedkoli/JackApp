@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import { Button } from './ui/button';
 import { Label } from './ui/label';
 import { Input } from './ui/input';
-import Image from 'next/image';
 import { Player, Controls } from '@lottiefiles/react-lottie-player';
 import Link from 'next/link';
 import swal from 'sweetalert';
@@ -51,7 +50,7 @@ function Login() {
 <div className='my-4'>
   <h1 className='text-3xl font-semibold'>Login</h1>
   <p className='mt-2 text-xs text-slate-400'>
-  
+   
     Go With Your Business Next Level</p>
 </div>
 
