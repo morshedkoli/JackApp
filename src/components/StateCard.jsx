@@ -13,7 +13,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 
 
-export function StateCard({title, desc, amount}) {
+export default function StateCard({title, desc, amount}) {
   return (
     <Card className="w-[350px]">
       <CardHeader>
