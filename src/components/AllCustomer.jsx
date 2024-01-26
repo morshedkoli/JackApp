@@ -1,3 +1,4 @@
+"use client"
 import React, { useState, useEffect } from 'react'; // Import React for JSX and hooks
 import ControlledAccordions from './ControlledAccordions';
 
