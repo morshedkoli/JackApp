@@ -5,7 +5,7 @@ import BoxLayout from './BoxLayout'
 function RechargeBox() {
 
 
-    const Services = [
+  const services = [
         {title:"Recharge", location:"/services/recharge", image:"https://ikramtel.in/webapp/img/Mobile%20Recharge.png"},
         {title:"bKash", location:"dashboard/services/bkash", image:"https://ikramtel.in/webapp/img/bKash.png"},
         {title:"Nagad", location:"/services/nagad", image:"https://ikramtel.in/webapp/img/Nagad.png"},
@@ -17,15 +17,12 @@ function RechargeBox() {
 
 
   return (
-    <div className='p-5 gap-3 flex justify-start flex-wrap'>
-       {
-        Services.map((service, index)=>(
-            <BoxLayout key={index}  service={service}/>
-        ))
-       }
-       
+   <div className='p-5 gap-3 flex justify-start flex-wrap'>
+      {services.map((service) => (
+        <BoxLayout key={service.id} service={service} />
+      ))}
     </div>
-  )
+  );
 }
 
 export default RechargeBox
