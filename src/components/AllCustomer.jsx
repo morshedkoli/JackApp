@@ -1,56 +1,56 @@
+import React, { useState, useEffect } from 'react'; // Import React for JSX and hooks
 import ControlledAccordions from './ControlledAccordions';
 
-async function AllCustomer() {
+function AllCustomer() {
+  const [data, setData] = useState(null); // State to manage fetched data
+  const [error, setError] = useState(null); // State for potential errors
 
-  const res = await fetch(`${process.env.HOST}/api/user/allcustomer`)
-  const data = await res.json()
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(`${process.env.HOST}/api/user/allcustomer`);
+        const responseData = await res.json();
+        if (responseData.status === 'success') {
+          setData(responseData.data);
+        } else {
+          setError('There is some problem in backend');
+        }
+      } catch (error) {
+        setError('Failed to fetch data');
+      }
+    };
 
+    fetchData();
+  }, []);
 
-  function sumBalance(arr) {
-    let sum = 0;
-  
-    for (let obj of arr) {
-      sum += obj.balance;
-  
-    }
-    return sum;
-  }
-
-  
-  function sumCreditBalance(arr) {
-    let sum = 0;
-  
-    for (let obj of arr) {
-      sum += obj.credit_balance;
-  
-    }
-  
-    return sum;
-  }
-
-  const totalBalance = sumBalance(data["data"]);
-  const totalCreditBalance = sumCreditBalance(data["data"]);
-
+  const sumBalance = (arr) => arr.reduce((sum, obj) => sum + obj.balance, 0);
+  const sumCreditBalance = (arr) => arr.reduce((sum, obj) => sum + obj.credit_balance, 0);
 
   return (
     <div className='p-4 shadow-lg rounded bg-gray-100 mt-10'>
-    <div className='flex justify-between p-4 text-lg font-bold'>
-    <h1>Customer Info</h1>
-    <h2>Total Balance: {totalBalance}</h2>
-    <h2>Total Credit Balance Limit : {totalCreditBalance}</h2>
-    </div>
-
-{ data.status=== "fail"? <h1>There is some problem in backend</h1>:
- data["data"].map((user)=>(
-  <div key={user.id} className='flex justify-between  mt-1 '>
-        <ControlledAccordions user={user} />
+      <div className='flex justify-between p-4 text-lg font-bold'>
+        <h1>Customer Info</h1>
+        {data && ( // Conditionally render only if data is present
+          <>
+            <h2>Total Balance: {sumBalance(data)}</h2>
+            <h2>Total Credit Balance Limit: {sumCreditBalance(data)}</h2>
+          </>
+        )}
       </div>
-    ))
-}
 
-    
-  </div>
-  )
+      {error ? ( // Display error message if present
+        <h1>{error}</h1>
+      ) : data ? ( // Render customers only if data is available
+        data.map((user) => (
+          <div key={user.id} className='flex justify-between mt-1'>
+            <ControlledAccordions user={user} />
+          </div>
+        ))
+      ) : ( // Show a loading indicator while data is being fetched
+        <p>Loading customer data...</p>
+      )}
+    </div>
+  );
 }
 
 export default AllCustomer;
