@@ -1,4 +1,6 @@
-"use client"
+// Client-side rendering for this component
+export const config = { amp: true }; // Ensure AMP compatibility
+
 import * as React from 'react';
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -9,12 +11,10 @@ import { Button, Stack } from '@mui/material';
 import { FaRegEye } from "react-icons/fa6";
 import { FaEyeSlash } from "react-icons/fa";
 
-export default function ControlledAccordions({user}) {
+export default function ControlledAccordions({ user }) {
   const [expanded, setExpanded] = React.useState(false);
-
-
-  const [passShow, setPassShow] = React.useState(false)
-  const [pinShow, setPinShow] = React.useState(false)
+  const [passShow, setPassShow] = React.useState(false);
+  const [pinShow, setPinShow] = React.useState(false);
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
@@ -29,32 +29,52 @@ export default function ControlledAccordions({user}) {
           id="panel1bh-header"
         >
           <Typography sx={{ width: '33%', flexShrink: 0 }}>
-            {user["name"]}
+            {user.name}
           </Typography>
-          <Typography sx={{ width: '33%', color: 'text.secondary' }}>Balance: {user["balance"]}</Typography>
-          <Typography sx={{ color: 'text.secondary' }}>Credit Balance: {user["credit_balance"]}</Typography>
+          <Typography sx={{ width: '33%', color: 'text.secondary' }}>
+            Balance: {user.balance}
+          </Typography>
+          <Typography sx={{ color: 'text.secondary' }}>
+            Credit Balance: {user.credit_balance}
+          </Typography>
         </AccordionSummary>
         <AccordionDetails className='flex w-full'>
-         <Stack style={{ width: '33%' }}>
-         <Typography> Phone : {user["phone"]}</Typography>
-          <Typography> Email : {user["email"]}</Typography>
-         
-         </Stack>
-         <Stack style={{ width: '33%' }}>
-         
-          <Typography className='flex gap-2'> Password : {passShow ? `${user["password"]}` : "*****"}  <span  > {passShow? <FaEyeSlash className='cursor-pointer' onClick={()=>setPassShow(false)} />: <FaRegEye className='cursor-pointer' onClick={()=>setPassShow(true)}  />} </span></Typography>
-          <Typography className='flex gap-2'> Pin : {pinShow ? `${user["pin"]}` : "*****"}  <span  > {pinShow? <FaEyeSlash className='cursor-pointer' onClick={()=>setPinShow(false)} />: <FaRegEye className='cursor-pointer' onClick={()=>setPinShow(true)}  />} </span></Typography>
-         </Stack>
-         <div  className='flex gap-6 justify-between'>
-         
-         <button className='p-1 pr-2 pl-2 text-white bg-green-600 rounded-md font-semibold '>Add Balance</button>
-         <button className='p-1 pr-2 pl-2 text-white bg-amber-700 rounded-md font-semibold '>View Profile</button>
-         
-
-         </div>
+          <Stack style={{ width: '33%' }}>
+            <Typography>Phone: {user.phone}</Typography>
+            <Typography>Email: {user.email}</Typography>
+          </Stack>
+          <Stack style={{ width: '33%' }}>
+            <Typography className='flex gap-2'>
+              Password: {passShow ? user.password : "*****"}
+              <span>
+                {passShow ? (
+                  <FaEyeSlash className='cursor-pointer' onClick={() => setPassShow(false)} />
+                ) : (
+                  <FaRegEye className='cursor-pointer' onClick={() => setPassShow(true)} />
+                )}
+              </span>
+            </Typography>
+            <Typography className='flex gap-2'>
+              Pin: {pinShow ? user.pin : "*****"}
+              <span>
+                {pinShow ? (
+                  <FaEyeSlash className='cursor-pointer' onClick={() => setPinShow(false)} />
+                ) : (
+                  <FaRegEye className='cursor-pointer' onClick={() => setPinShow(true)} />
+                )}
+              </span>
+            </Typography>
+          </Stack>
+          <div className='flex gap-6 justify-between'>
+            <button className='p-1 pr-2 pl-2 text-white bg-green-600 rounded-md font-semibold'>
+              Add Balance
+            </button>
+            <button className='p-1 pr-2 pl-2 text-white bg-amber-700 rounded-md font-semibold'>
+              View Profile
+            </button>
+          </div>
         </AccordionDetails>
       </Accordion>
-      
     </div>
   );
 }
