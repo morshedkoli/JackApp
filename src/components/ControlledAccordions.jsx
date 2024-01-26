@@ -1,4 +1,5 @@
 // Client-side rendering for this component
+"use client"
 export const config = { amp: true }; // Ensure AMP compatibility
 
 import * as React from 'react';
